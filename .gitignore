@@ -1,0 +1,22 @@
+# never commit sessions
+whatsapp-session/
+sessions/
+.auth/
+
+# logs
+logs/
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Puppeteer chromium (never commit)
+**/.local-chromium/
+**/chrome-win/
+**/chrome-linux/
+**/chrome-mac/
+
+node_modules/puppeteer-core/.local-chromium/
+whatsapp/node/
+whatsapp-session/
