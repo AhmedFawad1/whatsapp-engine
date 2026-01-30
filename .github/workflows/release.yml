@@ -1,0 +1,26 @@
+name: Build and Release WhatsApp Engine
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create ZIP
+        run: |
+          zip -r whatsapp-engine-win-x64.zip whatsapp
+
+      - name: Create GitHub Release and upload ZIP
+        uses: softprops/action-gh-release@v2
+        with:
+          files: whatsapp-engine-win-x64.zip
