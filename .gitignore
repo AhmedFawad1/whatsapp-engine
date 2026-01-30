@@ -6,7 +6,7 @@ sessions/
 # logs
 logs/
 *.log
-
+*.txt
 # OS junk
 .DS_Store
 Thumbs.db

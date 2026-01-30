@@ -27,7 +27,7 @@ if (!appData) {
   process.exit(1);
 }
 
-const baseDir = path.resolve(appData, "com.fitopscentral.com");
+const baseDir = path.resolve(appData, "com.fitopscentral.app");
 const sessionDir = path.join(baseDir, "whatsapp-session");
 const queueFile = path.join(baseDir, "message-queue.json");
 
