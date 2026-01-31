@@ -1,6 +1,8 @@
 /************************
  * WhatsApp Engine – ULTRA STABLE (DIAG + TAKEOVER + NO CACHE)
  ************************/
+process.env.CHROME_LOG_FILE = "NUL";
+process.env.CHROME_LOG_LEVEL = "3";
 
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
@@ -150,7 +152,7 @@ function getHealthSnapshot() {
     uptimeSec: Math.floor((Date.now() - startTime) / 1000),
     lastError: state.lastError,
     lastWaState: state.lastWaState,
-    headless: true,
+    headless: false,
   };
 }
 
@@ -326,16 +328,34 @@ function createClient() {
     puppeteer: {
       headless: true,
       executablePath: chromePath,
-      dumpio: true, // ✅ show chrome logs in terminal
+      dumpio: false, // ✅ show chrome logs in terminal
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
+
+        // 🔇 kill google noise
+        "--disable-background-networking",
+        "--disable-sync",
+        "--disable-extensions",
+        "--disable-default-apps",
+        "--disable-component-update",
+        "--disable-client-side-phishing-detection",
+        "--disable-domain-reliability",
+        "--disable-features=Translate,BackForwardCache",
+
+        // 🔇 kill ssl + telemetry retries
         "--disable-gpu",
         "--disable-dev-shm-usage",
+
+        // 🧘 performance calm
         "--disable-background-timer-throttling",
         "--disable-backgrounding-occluded-windows",
         "--disable-renderer-backgrounding",
-      ],
+
+        // optional but nice
+        "--log-level=3", // only fatal
+      ]
+
     },
   });
 
