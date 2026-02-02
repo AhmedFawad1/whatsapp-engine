@@ -196,7 +196,7 @@ function createClient() {
     takeoverTimeoutMs: 0,
     webVersionCache: { type: "none" },
     puppeteer: {
-      headless: false,
+      headless: true,
       executablePath: findChromeExecutable(),
       args: [
         "--no-sandbox",
