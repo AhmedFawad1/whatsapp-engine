@@ -24,7 +24,6 @@ const SEND_DELAY_MS = Number(process.env.SEND_DELAY_MS || 15_000);
 const STARTUP_READY_TIMEOUT_MS = 60_000;
 const RESTART_COOLDOWN_MS = 60_000;
 
-console.log(process.env.headless);
 /* -------------------------------------------------
  * PATHS
  * ------------------------------------------------- */
